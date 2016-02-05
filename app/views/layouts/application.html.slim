@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    title Ruby Eye Monitoring
+
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+  body
+    header.header
+      .navbar.navbar-inverse.navbar-fixed-top
+        .container
+          .navbar-header
+            button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            = link_to root_path, class: 'navbar-brand' do
+              = icon('eye')
+
+          #navbar.collapse.navbar-collapse
+            ul.nav.navbar-nav
+              li.active = link_to 'Hosts', '#'
+
+    .container
+      = yield

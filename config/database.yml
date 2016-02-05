@@ -1,0 +1,20 @@
+default: &default
+  host: localhost
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: eye_development
+
+test: &test
+  <<: *default
+  database: eye_test
+
+production:
+  <<: *default
+  database: eye_production
+
+cucumber:
+  <<: *test
