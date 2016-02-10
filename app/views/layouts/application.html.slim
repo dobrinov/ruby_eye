@@ -26,7 +26,10 @@ html
 
           #navbar.collapse.navbar-collapse
             ul.nav.navbar-nav
+              li.active = link_to 'Index', '#'
               li.active = link_to 'Hosts', '#'
+              li.active = link_to 'Services', '#'
+              li.active = link_to 'Applications', '#'
 
     .container
       = yield

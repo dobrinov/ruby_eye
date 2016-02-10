@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20160204200848) do
 
   create_table "measurements", force: :cascade do |t|
     t.string   "host"
-    t.string   "subject"
     t.string   "layer"
-    t.string   "metric"
+    t.string   "subject"
+    t.string   "name"
     t.decimal  "value"
     t.datetime "timestamp"
   end

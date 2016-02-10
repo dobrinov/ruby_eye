@@ -1,6 +1,10 @@
 class Measurement < ActiveRecord::Base
   def self.batch_insert_columns
-    ['layer', 'host', 'subject', 'metric', 'value', 'timestamp']
+    ['layer', 'host', 'subject', 'name', 'value', 'timestamp']
+  end
+
+  def batch_insert_values
+    [layer, host, subject, name, value.to_f, timestamp]
   end
 
   def self.build_from_json(measurement)
@@ -11,7 +15,7 @@ class Measurement < ActiveRecord::Base
     new(measurement)
   end
 
-  def batch_insert_values
-    [layer, host, subject, metric.to_f, value, timestamp]
+  def metric
+    Metric.new(layer, subject, name)
   end
 end
