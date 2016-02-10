@@ -1,6 +1,8 @@
 # Ruby Eye
 Monitoring & alerting for monolith and distributed systems.
 
+[![Build Status](https://circleci.com/gh/dobrinov/ruby_eye.svg?style=shield&circle-token=:circle-token)
+
 ## Installation
 ##### Development
 1. Make sure that you have a system with PostgreSQL and Ruby
