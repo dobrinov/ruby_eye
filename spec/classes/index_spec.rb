@@ -4,13 +4,13 @@ RSpec.describe Index do
   subject(:index) { described_class }
 
   let(:number_of_hosts)         { 3 }
-  let(:metrics_per_host)        { 2 }
+  let(:metrics_per_layer)       { 2 }
   let(:measurements_per_metric) { 2 }
 
   let(:seeder) do
     MeasurementSeeder.new \
       number_of_hosts,
-      metrics_per_host,
+      metrics_per_layer,
       measurements_per_metric
   end
 

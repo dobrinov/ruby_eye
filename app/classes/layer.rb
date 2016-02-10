@@ -1,7 +1,13 @@
 class Layer
+  attr_reader :name
+
+  PHYSICAL    = 'physical'
+  SERVICE     = 'service'
+  APPLICATION = 'application'
+  BUSINESS    = 'business'
 
   def self.all
-    ['physical', 'service', 'application', 'business']
+    [PHYSICAL, SERVICE, APPLICATION, BUSINESS]
   end
 
   def initialize(name)
@@ -9,10 +15,10 @@ class Layer
   end
 
   def metrics
-    []
+    Metric.where(layer: name)
   end
 
   def measurements
-    []
+    Measurement.where(layer: name)
   end
 end
