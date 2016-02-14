@@ -1,3 +1,5 @@
+![Ruby Eye](/app/assets/images/cover.png)
+
 # Ruby Eye
 Monitoring & alerting for monolith and distributed systems.
 

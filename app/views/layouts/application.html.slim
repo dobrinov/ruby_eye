@@ -22,14 +22,14 @@ html
               span.icon-bar
               span.icon-bar
             = link_to root_path, class: 'navbar-brand' do
-              = icon('eye')
+              = image_tag 'logo_xs.png', alt: 'Ruby Eye'
 
           #navbar.collapse.navbar-collapse
             ul.nav.navbar-nav
-              li.active = link_to 'Index', '#'
-              li.active = link_to 'Hosts', hosts_path
-              li.active = link_to 'Services', '#'
-              li.active = link_to 'Applications', '#'
+              li = link_to 'Index', '#'
+              li class="#{'active' if params[:controller] == 'hosts'}" = link_to 'Hosts', hosts_path
+              li = link_to 'Services', '#'
+              li = link_to 'Applications', '#'
 
     .container
       = yield
