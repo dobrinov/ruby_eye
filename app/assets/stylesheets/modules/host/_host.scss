@@ -1,0 +1,14 @@
+.hosts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.host {
+  margin: 0px 0px 15px 0px;
+  padding: 5px;
+  text-align: center;
+  line-height: 50px;
+  border: 1px solid #cfcfcf;
+  @include border-radius(4px);
+}
