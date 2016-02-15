@@ -13,7 +13,7 @@ RSpec.describe HostsController do
   # GET show
   describe '#show' do
     it 'is 200' do
-      get :show, id: 'example.com'
+      get :show, hostname: 'example.com'
       expect(response).to be_success
     end
   end
