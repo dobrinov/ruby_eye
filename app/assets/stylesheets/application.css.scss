@@ -19,7 +19,7 @@ body {
   }
 }
 
-.navbar-inverse .navbar-nav > .active > a {
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover {
   color: #E72C2D;
 }
 
@@ -29,3 +29,4 @@ body {
 }
 
 @import "modules/host/*";
+@import "modules/rubyeye-presentation/*";

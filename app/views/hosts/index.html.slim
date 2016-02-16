@@ -4,17 +4,9 @@ h1 Hosts
   - if @hosts.any?
     ul.hosts
       - @hosts.each do |host|
-        .col-sm-2
+        .col-sm-3
           li.host
-            .progress
-              .progress-bar.progress-bar-success style="width: 60%;" 60%
-            .progress
-              .progress-bar.progress-bar-success style="width: 60%;" 60%
-            .progress
-              .progress-bar.progress-bar-success style="width: 60%;" 60%
-            .progress
-              .progress-bar.progress-bar-success style="width: 60%;" 60%
-
             = link_to(host.name, host_path(hostname: host.name))
   - else
-    p There are no hosts reporting.
+    .col-xs-12
+      .alert.alert-info There are no hosts reporting.

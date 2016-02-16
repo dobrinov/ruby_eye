@@ -1,0 +1,18 @@
+h1 Index
+
+- if @measurements.any?
+  table.table.table-condensed
+    thead
+      tr
+        th Metric
+        th Current measurement
+        th Measurement taken at
+    tbody
+      - @measurements.each do |measurement|
+        tr
+          td = measurement.metric
+          td = measurement.value
+          td = measurement.timestamp
+
+- else
+  .alert.alert-info There are no recorded measurements.

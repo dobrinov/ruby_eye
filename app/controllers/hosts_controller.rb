@@ -5,5 +5,6 @@ class HostsController < ApplicationController
   end
 
   def show
+    @host = Host.new(params[:hostname])
   end
 end
