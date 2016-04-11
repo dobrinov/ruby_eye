@@ -6,9 +6,13 @@ RSpec.describe Layer do
   let(:application_layer) { Layer.new(Layer::APPLICATION) }
   let(:business_layer)    { Layer.new(Layer::BUSINESS)    }
 
+  let(:layers) { [physical_layer, service_layer, application_layer, business_layer] }
+
   let(:number_of_hosts)         { 3 }
   let(:metrics_per_layer)       { 2 }
   let(:measurements_per_metric) { 2 }
+
+  let(:measurements_per_layer) { number_of_hosts * metrics_per_layer * measurements_per_metric }
 
   let(:seeder) do
     MeasurementSeeder.new \
@@ -23,43 +27,31 @@ RSpec.describe Layer do
     end
   end
 
+  describe '.all' do
+    it 'returns layer count' do
+      expect(described_class.count).to eq(4)
+    end
+  end
+
   describe '#metrics' do
     before { seeder.seed }
 
-    it 'retunrs physical layer metrics' do
-      expect(physical_layer.metrics.map(&:to_s).sort).to eq(seeder.physical_metrics.map(&:to_s).sort)
-    end
-
-    it 'retunrs service layer metrics' do
-      expect(service_layer.metrics.map(&:to_s).sort).to eq(seeder.service_metrics.map(&:to_s).sort)
-    end
-
-    it 'retunrs application layer metrics' do
-      expect(application_layer.metrics.map(&:to_s).sort).to eq(seeder.application_metrics.map(&:to_s).sort)
-    end
-
-    it 'retunrs business layer metrics' do
-      expect(business_layer.metrics.map(&:to_s).sort).to eq(seeder.business_metrics.map(&:to_s).sort)
+    it "retunrs layer metrics" do
+      layers.each do |layer|
+        expect(layer.metrics.count).to eq(metrics_per_layer)
+        expect(layer.metrics.map(&:layer).uniq).to eq([layer.name])
+      end
     end
   end
 
   describe '#measurements' do
     before { seeder.seed }
 
-    it 'retunrs physical layer measurements' do
-      expect(physical_layer.measurements.map(&:value).sort).to eq(seeder.physical_measurements.map(&:value).sort)
-    end
-
-    it 'retunrs service layer measurements' do
-      expect(service_layer.measurements.map(&:value).sort).to eq(seeder.service_measurements.map(&:value).sort)
-    end
-
-    it 'retunrs application layer measurements' do
-      expect(application_layer.measurements.map(&:value).sort).to eq(seeder.application_measurements.map(&:value).sort)
-    end
-
-    it 'retunrs business layer measurements' do
-      expect(business_layer.measurements.map(&:value).sort).to eq(seeder.business_measurements.map(&:value).sort)
+    it 'retunrs layer measurements' do
+      layers.each do |layer|
+        expect(layer.measurements.count).to eq(measurements_per_layer)
+        expect(layer.measurements.map(&:layer).uniq).to eq([layer.name])
+      end
     end
   end
 end

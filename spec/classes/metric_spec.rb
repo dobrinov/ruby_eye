@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Metric do
-  subject(:metric) { seeder.sample_metric }
+  subject(:metric) { seeder.metrics.sample }
 
   let(:number_of_hosts)         { 3 }
   let(:metrics_per_layer)       { 2 }

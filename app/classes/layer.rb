@@ -10,6 +10,10 @@ class Layer
     [PHYSICAL, SERVICE, APPLICATION, BUSINESS]
   end
 
+  def self.count
+    all.count
+  end
+
   def initialize(name)
     @name = name
   end
