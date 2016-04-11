@@ -6,7 +6,7 @@ class Index
 
   def self.measurements
     Measurement
-      .select('DISTINCT ON (layer, subject, name) *')
-      .order(:layer, :subject, :name, timestamp: :desc).to_a
+      .select('DISTINCT ON (layer, subject, name, host) *')
+      .order(:layer, :subject, :name, :host, timestamp: :desc).to_a
   end
 end

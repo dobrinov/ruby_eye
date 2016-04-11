@@ -5,12 +5,14 @@ h1 Index
     thead
       tr
         th Metric
+        th Host
         th Current measurement
         th Measurement taken at
     tbody
       - @measurements.each do |measurement|
         tr
           td = measurement.metric
+          td = measurement.host
           td = measurement.value
           td = measurement.timestamp
 

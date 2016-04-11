@@ -7,6 +7,8 @@ RSpec.describe Index do
   let(:metrics_per_layer)       { 2 }
   let(:measurements_per_metric) { 2 }
 
+  let(:index_size) { number_of_hosts * Layer.count * metrics_per_layer }
+
   let(:seeder) do
     MeasurementSeeder.new \
       number_of_hosts,
@@ -22,7 +24,7 @@ RSpec.describe Index do
 
       expect(index_metrics).to be_a(Array)
       expect(index_metrics.map(&:class).map(&:name).uniq).to eq(['Metric'])
-      expect(index_metrics.count).to eq(index_metrics.count)
+      expect(index_metrics.count).to eq(index_size)
     end
   end
 
@@ -34,11 +36,7 @@ RSpec.describe Index do
 
       expect(index_measurements).to be_a(Array)
       expect(index_measurements.map(&:class).map(&:name).uniq).to eq(['Measurement'])
-      expect(index_measurements.count).to eq(seeder.index_measurements.count)
-
-      index_measurements.each do |index_measurement|
-        expect(index_measurement.value).to eq(seeder.index_measurements[index_measurement.metric.to_s].value)
-      end
+      expect(index_measurements.count).to eq(index_size)
     end
   end
 end
