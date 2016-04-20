@@ -1,0 +1,34 @@
+= form_for condition_manager, url: alert_policy_conditions_path(policy_id: condition_manager.policy_id) do |f|
+  = f.hidden_field :policy_id, value: params[:policy_id]
+
+  .form-group
+    .row
+      .col-xs-4
+        = f.label :metric
+        = f.text_field :metric, placeholder: 'physical/cpu/usage', class: 'form-control'
+      .col-xs-4
+        = f.label :comparison_operator
+        = f.select :comparison_operator, options_for_select(Alert::Condition.comparison_operators.keys.to_a), {}, { class: 'form-control' }
+
+      .col-xs-4
+        = f.label :warning_threshold
+        = f.text_field :warning_threshold, placeholder: '80', class: 'form-control'
+
+        = f.label :critical_threshold
+        = f.text_field :critical_threshold, placeholder: '90', class: 'form-control'
+
+  .form-group
+    .row
+      .col-xs-4
+        = f.label :period_type
+        = f.select :period_type, options_for_select(Alert::Condition.period_types.keys.to_a), {}, { class: 'form-control' }
+
+      .col-xs-4
+        = f.label :period_value
+        = f.text_field :period_value, placeholder: '50', class: 'form-control'
+      .col-xs-4
+        = f.label :period_measurement
+        = f.select :period_measurement, options_for_select(Alert::Condition.period_measurements.keys.to_a), {}, { class: 'form-control' }
+
+  .form-group
+    = f.submit class: 'btn btn-primary'

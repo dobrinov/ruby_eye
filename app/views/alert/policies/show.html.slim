@@ -1,0 +1,52 @@
+h1 Alert policies
+
+= link_to alert_policies_path, class: 'btn btn-default' do
+  = fa_icon('chevron-left')
+  | &nbsp;
+  | Back
+
+br
+br
+
+.panel.panel-default
+  .panel-heading
+    strong Policy details
+  table.table.table-bordered
+    tr
+      th Name
+      td = @policy.name
+    tr
+      th Description
+      td = @policy.description
+    tr
+      th Runbook
+      td
+        - if @policy.runbook.present?
+          = link_to nil, @policy.runbook, target: 'blank'
+        - else
+          | n/a
+
+  .panel-body.text-center
+    = link_to 'Edit', edit_alert_policy_path(@policy), class: 'btn btn-default'
+    | &nbsp;
+    = link_to 'Delete', alert_policy_path(@policy), :method => :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+
+.panel.panel-default
+  .panel-heading
+    strong Alert conditions
+
+  - if @policy.conditions.any?
+    table.table.table-bordered
+      thead
+        tr
+          th &nbsp;
+          th Condition
+
+      tbody
+        - @policy.conditions.each do |condition|
+          tr
+            td = link_to fa_icon('search'), '#', class: 'btn btn-default btn-xs'
+            td = condition.to_s
+
+  .panel-body.text-center
+    = link_to 'Create new alert condition', new_alert_policy_condition_path(policy_id: @policy.id), class: 'btn btn-primary'

@@ -1,0 +1,16 @@
+h1 Alert policies
+
+= link_to alert_policy_path(@policy), class: 'btn btn-default' do
+  = fa_icon('chevron-left')
+  | &nbsp;
+  | Back
+
+br
+br
+
+.panel.panel-default
+  .panel-heading
+    strong Edit alert policy
+
+  .panel-body
+    = render partial: 'form', locals: { policy: @policy }

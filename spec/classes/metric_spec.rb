@@ -30,6 +30,22 @@ RSpec.describe Metric do
     end
   end
 
+  describe '.new_from_string' do
+    let(:layer) { 'layer' }
+    let(:subj)  { 'subject' }
+    let(:name)  { 'name' }
+
+    let(:metric) { described_class.new(layer, subj, name).to_s }
+
+    it 'is a new metric' do
+      expect(Metric.new_from_string(metric)).to be_a(Metric)
+    end
+
+    it 'assigns attributes properly' do
+      expect(Metric.new_from_string(metric).to_s).to eq(metric.to_s)
+    end
+  end
+
   describe '#to_s' do
     before { seeder.seed }
 

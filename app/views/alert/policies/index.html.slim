@@ -1,0 +1,29 @@
+h1 Alert policies
+
+- if @policies.any?
+  .panel.panel-default
+    .panel-heading
+      strong Alert policies
+    table.table.table-bordered.table-hover
+      thead
+        tr
+          th &nbsp;
+          th Name
+
+      tbody
+        - @policies.each do |policy|
+          tr
+            td = link_to fa_icon('search'), alert_policy_path(policy), class: 'btn btn-default btn-xs'
+            td
+              strong = policy.name
+              - if policy.description.present?
+                div = policy.description
+
+    .panel-body.text-center
+      = link_to 'Create new policy', new_alert_policy_path, class: 'btn btn-primary'
+
+- else
+  .alert.alert-info.text-center
+    p There are no alert policies.
+    br
+    = link_to 'Create new policy', new_alert_policy_path, class: 'btn btn-primary'

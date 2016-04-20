@@ -1,4 +1,4 @@
-module Alerting
+module Alert
   class IncidentsController < ApplicationController
     def index
     end

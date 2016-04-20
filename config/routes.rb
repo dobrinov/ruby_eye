@@ -12,12 +12,12 @@ Rails.application.routes.draw do
   # Applications
   get 'applications', to: 'applications#index'
 
-  namespace :alerting do
-    # Policies
-    get 'policies', to: 'policies#index'
+  namespace :alert do
+    resources :policies do
+      resources :conditions, except: [:index, :show]
+    end
 
-    # Incidents
-    get 'incidents', to: 'incidents#index'
+    resources :incidents, only: [:index]
   end
 
   root to: 'static_pages#dashboard'

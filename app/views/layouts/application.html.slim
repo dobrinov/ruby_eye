@@ -26,18 +26,20 @@ html
 
           #navbar.collapse.navbar-collapse
             ul.nav.navbar-nav
+              li class="" = link_to 'Dashboards','#'
               li class="#{'active' if params[:controller] == 'index'}"        = link_to 'Index',        index_path
               li class="#{'active' if params[:controller] == 'hosts'}"        = link_to 'Hosts',        hosts_path
               li class="#{'active' if params[:controller] == 'services'}"     = link_to 'Services',     services_path
               li class="#{'active' if params[:controller] == 'applications'}" = link_to 'Applications', applications_path
+              li class="" = link_to 'Business', '#'
 
-              li.dropdown
+              li.dropdown class="#{'active' if params[:controller] =~ /alert/}"
                 a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
                   | Alerting
                   span.caret
                 ul.dropdown-menu
-                  li = link_to 'Policies', alerting_policies_path
-                  li = link_to 'Incidents', alerting_incidents_path
+                  li = link_to 'Policies', alert_policies_path
+                  li = link_to 'Incidents', alert_incidents_path
 
     .container
       = yield

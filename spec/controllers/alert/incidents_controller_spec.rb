@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Alerting::IncidentsController do
+RSpec.describe Alert::IncidentsController do
 
   # GET index
   describe '#index' do

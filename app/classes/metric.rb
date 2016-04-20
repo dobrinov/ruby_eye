@@ -13,6 +13,11 @@ class Metric
     end
   end
 
+  def self.new_from_string(string)
+    layer, subject, name = string.split('/')
+    new(layer, subject, name)
+  end
+
   def initialize(layer, subject, name)
     @layer = layer
     @subject = subject

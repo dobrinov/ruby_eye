@@ -1,0 +1,16 @@
+h1 Alert policies
+
+= link_to alert_policy_path(@condition_manager.policy_id), class: 'btn btn-default' do
+  = fa_icon('chevron-left')
+  | &nbsp;
+  | Back
+
+br
+br
+
+.panel.panel-default
+  .panel-heading
+    strong New alert condition
+
+  .panel-body
+    = render partial: 'form', locals: { condition_manager: @condition_manager }
